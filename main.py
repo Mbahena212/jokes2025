@@ -55,41 +55,48 @@
 
 
 
-# At least one list
+jokes = {
+    "robbers": ["Knock Knock", "Calder", "Calder police — I've been robbed!"],
+    "tanks": ["Knock Knock", "Tank", "You are welcome!"],
+    "pencils": ["Knock Knock", "Broken pencil", "Nevermind, it's pointless!"]
+}
 
-jokes = { 
-     "robbers": ["Knock Knock", "Calder", "Calder police  I've been robbed!"],
-        "tanks": ["Knock Knock", "Tank", "You are welcome!"],
-        "pencils": ["Knock Knock", "Broken pencil", "Nevermind, it's pointless!"] 
-    }
-
-
-# At least two functions
- # Function: plays a single joke based on category def tell_joke(category): for line in jokes[category]: input(line) # iteration print()
-def tell_joke(category): 
-    for line in jokes[category]: 
-         print(line)    
+# Function 1: tells a joke
+def tell_joke(category):
+    for line in jokes[category]:      # iteration
+        input(line + " ")
     print()
 
-def ask_continue(): 
-            return input("Do you want to hear another joke or are you finished? ")
+# Function 2: asks to continue
+def ask_continue():
+    return input("Do you want another joke? (yes or finished): ")
 
-joke = input("Do you want to hear a joke? ")
+# Function 3: gets a valid category
+def get_category():
+    while True:                       # iteration
+        choice = input("Choose a joke: robbers, tanks, or pencils: ")
+        if choice in jokes:           # selection
+            return choice
 
-if joke == "yes": 
+# Main program
+start = input("Do you want to hear a joke? (yes or no): ")
+
+if start == "yes":
     while True:
-        category = input("Choose a joke: robbers, tanks, or pencils: ")
+        category = get_category()     # parameter used
+        tell_joke(category)           # parameter used
 
-        if category in jokes:
-            tell_joke(category)
-            
+        again = ask_continue()
+        if again == "finished":       # selection
+            break
 
- 
-        
+    # Ending sequence
+    rating = int(input("Please rate our game 1-10: "))
+    final_score = rating * 10
+    print(str(final_score) + "% satisfaction rate")
 
-    # The rest of the code is the ending squence
-    if joke == "finished":
-        rating = int(input("Please rate our game 1-10: "))
-        final_score = rating * 10
-        print(str(final_score) + " %  satisfaction rate")
-
+    friend = input("Would you recommend this game to a friend? (yes or no): ")
+    if friend == "yes":
+        print("Thanks, we appreciate it!")
+    else:
+        print("Sorry you did not enjoy it.")
