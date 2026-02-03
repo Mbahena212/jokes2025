@@ -63,7 +63,8 @@ jokes = {
 
 # Function 1: tells a joke
 def tell_joke(category):
-    for line in jokes[category]:      # iteration
+    for line in jokes[category]:      
+        # parameter inside a function call 
         input(line + " ")
     print()
 
