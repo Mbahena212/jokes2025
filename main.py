@@ -54,44 +54,46 @@
 
 
 
-
+# this is our list
 jokes = {
     "robbers": ["Knock Knock", "Calder", "Calder police — I've been robbed!"],
     "tanks": ["Knock Knock", "Tank", "You are welcome!"],
     "pencils": ["Knock Knock", "Broken pencil", "Nevermind, it's pointless!"]
 }
 
-# Function 1: tells a joke
+
 def tell_joke(category):
-    for line in jokes[category]:      
-        # parameter inside a function call 
+    for line in jokes[category]:      # parameter (category) inside a function call (def tell_joke)
         input(line + " ")
     print()
 
-# Function 2: asks to continue
+
 def ask_continue():
     return input("Do you want another joke? (yes or finished): ")
 
-# Function 3: gets a valid category
+
 def get_category():
     while True:                       # iteration
         choice = input("Choose a joke: robbers, tanks, or pencils: ")
         if choice in jokes:           # selection
             return choice
 
-# Main program
+
 start = input("Do you want to hear a joke? (yes or no): ")
 
 if start == "yes":
     while True:
         category = get_category()     # parameter used
         tell_joke(category)           # parameter used
-
         again = ask_continue()
         if again == "finished":       # selection
             break
 
-    # Ending sequence
+        elif start == "no" :
+         print("okay")
+         break
+
+    
     rating = int(input("Please rate our game 1-10: "))
     final_score = rating * 10
     print(str(final_score) + "% satisfaction rate")
